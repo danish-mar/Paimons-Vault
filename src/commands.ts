@@ -108,6 +108,11 @@ export async function addCommand(label: string) {
             name: 'password',
             message: 'Enter password:',
             validate: (value: string) => value.length > 0 ? true : 'Password cannot be empty'
+        },
+        {
+            type: 'text',
+            name: 'notes',
+            message: 'Enter optional notes:',
         }
     ]);
 
@@ -142,6 +147,7 @@ export async function addCommand(label: string) {
             encryptedPassword: encryptedData,
             iv,
             modifiedAt: now,
+            notes: response.notes || vault[existingEntryIndex].notes, // Update notes or keep existing
         };
         console.log(chalk.green(`Entry '${label}' updated successfully.`));
     } else {
@@ -152,6 +158,7 @@ export async function addCommand(label: string) {
             iv,
             createdAt: now,
             modifiedAt: now,
+            notes: response.notes || undefined,
         };
         vault.push(newEntry);
         console.log(chalk.green(`Entry '${label}' added successfully.`));
@@ -185,6 +192,9 @@ export async function getCommand(label: string) {
     console.log(chalk.white(`Label: ${entry.label}`));
     console.log(chalk.white(`Username: ${entry.username}`));
     console.log(chalk.white(`Password: ${decryptedPassword}`));
+    if (entry.notes) {
+        console.log(chalk.white(`Notes: ${entry.notes}`));
+    }
     console.log(chalk.cyan('-------------------'));
 
     const copyResponse = await prompts({
@@ -220,6 +230,9 @@ export async function listCommand() {
     vault.forEach(entry => {
         console.log(chalk.white(`Label: ${entry.label}`));
         console.log(chalk.white(`  Username: ${entry.username}`));
+        if (entry.notes) {
+            console.log(chalk.gray(`  Notes: Yes`));
+        }
         console.log(chalk.gray(`  Created: ${new Date(entry.createdAt).toLocaleString()}`));
         console.log(chalk.gray(`  Modified: ${new Date(entry.modifiedAt).toLocaleString()}`));
         console.log('---');

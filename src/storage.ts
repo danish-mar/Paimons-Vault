@@ -20,6 +20,7 @@ interface VaultEntry {
     iv: string;
     createdAt: number;
     modifiedAt: number;
+    notes?: string; // Optional notes field
 }
 
 interface Session {

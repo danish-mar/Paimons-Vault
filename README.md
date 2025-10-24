@@ -12,6 +12,7 @@ A secure command-line password manager inspired by the world of Teyvat. Paimon's
 *   **Session Management:** A token-based session keeps you authenticated for 4 hours, so you don't have to re-enter your TOTP code constantly.
 *   **Password Generation:** Generate strong, unique passwords for all your accounts.
 *   **Clipboard Integration:** Easily copy passwords to your clipboard.
+*   **Optional Notes:** Add optional notes to each password entry for additional context or reminders.
 
 ## Installation
 
@@ -51,21 +52,21 @@ pwmgr init
 ```
 
 ### `pwmgr add <label>`
-Add a new password entry to your vault. You'll be prompted for a username and password.
+Add a new password entry to your vault. You'll be prompted for a username, password, and optional notes.
 
 ```bash
 pwmgr add my_genshin_account
 ```
 
 ### `pwmgr get <label>`
-Retrieve and display a password entry from your vault. If your session has expired, you'll be prompted for your TOTP code.
+Retrieve and display a password entry from your vault. If your session has expired, you'll be prompted for your TOTP code. This will also display any associated notes.
 
 ```bash
 pwmgr get my_genshin_account
 ```
 
 ### `pwmgr list`
-List all labels and usernames stored in your vault.
+List all labels and usernames stored in your vault. An indicator will show if an entry has associated notes.
 
 ```bash
 pwmgr list
