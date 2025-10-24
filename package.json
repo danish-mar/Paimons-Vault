@@ -1,0 +1,37 @@
+{
+  "name": "getpass",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "bin": {
+    "pwmgr": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@types/node": "^24.9.1",
+    "chalk": "^5.6.2",
+    "clipboardy": "^5.0.0",
+    "commander": "^14.0.1",
+    "fuse.js": "^7.1.0",
+    "otplib": "^12.0.1",
+    "prompts": "^2.4.2",
+    "qrcode-terminal": "^0.12.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/prompts": "^2.4.9",
+    "@types/qrcode-terminal": "^0.12.2",
+    "jest": "^30.2.0",
+    "ts-jest": "^29.4.5"
+  }
+}
